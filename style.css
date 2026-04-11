@@ -31,34 +31,47 @@ a {
 
 .parent {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* RESPONSIVE — FLEXES WITH SCREEN SIZE */
+  grid-template-columns: 1fr 1fr; /* RESPONSIVE — FLEXES WITH SCREEN SIZE */
   gap: 2rem;
   max-width: 1200px;
   margin: 2rem auto;
   padding: 1rem;
 }
 
-.child, .child1, .child3, .child5 {
-  padding: 1rem;  /* REMOVES THE 300px MONSTROSITY */
+.child,
+.child1,
+.child3,
+.child5 {
+  padding: 1rem; /* REMOVES THE 300px MONSTROSITY */
   background-color: #2a2a2a;
   border-radius: 8px;
 }
 
-#aboutmepara, #interestspara {
-  max-width: 100%;  /* LETS TEXT FILL THE COLUMN */
+#aboutmepara,
+#interestspara {
+  max-width: 100%; /* LETS TEXT FILL THE COLUMN */
   line-height: 1.5;
 }
 
 @media (max-width: 768px) {
   .parent {
-    grid-template-columns: 1fr;  /* SINGLE COLUMN ON MOBILE */
+    grid-template-columns: 1fr;
+    .parent {
+      grid-template-columns: 1fr;
+    }
+    .child,
+    .child1,
+    .child3,
+    .child5 {
+      padding: 0.5rem;
+    }
   }
 }
 
-#counter{
+#counter {
   position: absolute;
   bottom: 80%;
-  left:45%;
+  left: 45%;
   background-color: #2a2a2a;
   padding: 20px 20px 20px 20px;
   border-radius: 10px;
