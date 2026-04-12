@@ -1,4 +1,4 @@
-let isbloodymode = false;
+let isdarkmode = false;
 let cnt = 0;
 let tips = [
   "closing tabs is faster than reloading",
@@ -11,85 +11,54 @@ let tips = [
   "visualise the idea before writing code",
   "take breaks, coding is hard",
   "break things",
-  "you break it, you make it!"
+  "you break it, you make it!",
 ];
 
 function tip_loop() {
   return tips[Math.floor(Math.random() * tips.length)];
 }
 
-const button = document.getElementById("bloodybutton");
+const button = document.getElementById("darkbutton");
+
 const gitlink = document.getElementById("gitlink");
+
 const linkedinlink = document.getElementById("linkedinlink");
+
 const projectlink1 = document.getElementById("projectlink1");
+
 const counter = document.getElementById("counter");
+
 const codetip = document.getElementById("codetip");
 
-const newtext = document.createElement("p");
+// Create the tip message element dynamically
+let newtext = document.createElement("div");
+newtext.className = "tip-message";
+newtext.style.display = "none"; // Hide initially
 document.body.appendChild(newtext);
 
 button.addEventListener("click", function () {
-  isbloodymode = !isbloodymode;
   cnt++;
-  if (isbloodymode) {
-    document.body.style.backgroundColor = "black";
-    document.body.style.color = "red";
-    gitlink.style.color = "orange";
-    linkedinlink.style.color = "orange";
-    projectlink1.style.color = "orange";
+  document.body.classList.toggle("dark-mode");
+  counter.innerText = "Toggle Counter: " + cnt;
+
+  // Change button text based on whether dark-mode class exists
+  if (document.body.classList.contains("dark-mode")) {
     button.innerText = "normal mode";
-    button.style.height = "40px";
-    button.style.backgroundColor = "rgb(0, 0, 0)";
-    button.style.border = "solid";
-    button.style.borderWidth = "2px";
-    counter.innerText = "Toggle Counter: " + cnt;
-    codetip.style.borderColor = "black";
-    counter.style.borderColor = "black";
-    codetip.style.color = "red";
-
-    button.onmouseenter = function () {
-      button.style.color = "white";
-      button.style.borderColor = "rgb(255, 255, 255)";
-    };
-    codetip.onmouseenter = function () {
-      codetip.style.color = "white";
-    };
-    codetip.onmouseleave = function () {
-      codetip.style.color = "red";
-    };
-    button.onmouseleave = function () {
-      button.style.color = "red";
-      button.style.borderColor = "black";
-    };
-  } else {
-    document.body.style.backgroundColor = "#1a1a1a";
-    document.body.style.color = "rgb(255,235,205)";
-    gitlink.style.color = "rgb(255,213,168)";
-    linkedinlink.style.color = "rgb(255,213,168)";
-    projectlink1.style.color = "rgb(255,213,168)";
-    button.style.border = "none";
+    button.style.backgroundColor = "#2a2a2a";
     button.style.color = "white";
-    button.innerText = "bloody dark mode";
-    button.style.backgroundColor = "rgb(0, 0, 0)";
-    button.style.borderWidth = "";
-    button.style.borderStyle = "";
-    counter.innerText = "Toggle Counter: " + cnt;
-    codetip.style.borderColor = "rgb(130, 105, 85)";
-    counter.style.borderColor = "rgb(130, 105, 85)";newtext.className = "tip-message";
-    codetip.style.color = "blanchedalmond"; 
-
-    button.onmouseenter = function () {
-      button.style.color = "red";
-      button.style.borderColor = "red";
-    };
-    button.onmouseleave = function () {
-      button.style.color = "white";
-      button.style.borderColor = "";
-    };
+    // ... minimal button-specific styles that don't belong in CSS
+  } else {
+    button.innerText = "normal mode";
+    button.style.backgroundColor = "black";
+    button.style.color = "white";
   }
 });
-
-codetip.addEventListener("click", function() {
+codetip.addEventListener("click", function () {
   newtext.innerText = tip_loop();
+  newtext.style.display = "block"; // Show the tip
+
+  // Optional: Auto-hide after 3 seconds
+  setTimeout(function () {
+    newtext.style.display = "none";
+  }, 3000);
 });
-newtext.className = "tip-message";
