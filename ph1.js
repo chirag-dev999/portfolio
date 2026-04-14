@@ -46,11 +46,26 @@ button.addEventListener("click", function () {
     button.innerText = "normal mode";
     button.style.backgroundColor = "#2a2a2a";
     button.style.color = "white";
+    button.onmouseenter = function () {
+      button.style.backgroundColor = "black";
+      button.style.fontSize="13.7px"
+    };
+    button.onmouseleave = function () {
+      button.style.backgroundColor = "";
+      button.style.fontSize=""
+    };
     // ... minimal button-specific styles that don't belong in CSS
   } else {
     button.innerText = "normal mode";
-    button.style.backgroundColor = "black";
-    button.style.color = "white";
+    button.style.backgroundColor = "#ffe5ae";
+    button.style.color = "black";
+    button.onmouseenter = function () {
+      button.style.backgroundColor = "black";
+      button.style.color = "white";
+    };
+    button.onmouseleave = function () {
+      button.style.backgroundColor = "";
+    };
   }
 });
 codetip.addEventListener("click", function () {

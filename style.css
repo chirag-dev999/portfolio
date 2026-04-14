@@ -91,6 +91,12 @@ iframe{
   border-width: 1.5px;
 }
 
+#codetip:hover{
+  background-color: #ffecc3;
+  font-size: 19px;
+  cursor: pointer;
+}
+
 #codetip{
   height: 100px;
   width: 110px;
@@ -156,4 +162,3 @@ body.dark-mode #counter{
   background-color: #1F1F1F;
   color: white;
 }
-
